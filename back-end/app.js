@@ -22,6 +22,21 @@ mongoose
 const { Message } = require('./models/Message')
 const { User } = require('./models/User')
 
+// new route for my About Us page
+app.get('/about', (req, res) => {
+  res.json({ 
+    title: 'About Us',
+    paragraphs: [
+      'Hi! This is my first time coding in javascript, I am excited to learn about javascript and learn how to code full-stack web applications. Some personal information about me, I am a Computer Science major that is in their junior year at NYU, I know it is a little early to say but I feel anxious about graduating already, time flies so quick!',
+      'My name is Alp Ozbay and I am from Istanbul, Turkey. However, I also consider myself half French because I have grown up around a lot of french people because I was studying at a french High-school, my favorite subject in High-school was history or biology, I really do not know how I ended up studying computer science but here I am!',
+      'I am a very curious person and I like to build solutions for people with problems, especially around health/medical related problems, my github has a few projects if you want to check them out, this is my old github account, in my new github account I try to contribute to a lot of open-source projects in my free-time. I think open-source is the future of this AI era and democratizing these new technologies through open-source is the best way to make sure that these technologies are not monopolized by a few big companies.',
+
+    ],
+    // to get a url of the picture I want I need to upload it in the repository first
+    imageUrl: 'http://localhost:5002/about-photo.jpg' //my image is not loading I couldn't figure out why sorry.
+  })
+})
+
 // a route to handle fetching all messages
 app.get('/messages', async (req, res) => {
   // load all messages from database
@@ -57,6 +72,7 @@ app.get('/messages/:messageId', async (req, res) => {
     })
   }
 })
+
 // a route to handle logging out users
 app.post('/messages/save', async (req, res) => {
   // try to save the message to the database
